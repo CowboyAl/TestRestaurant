@@ -49,33 +49,36 @@ I have made the following assumptions and simplifications:
 
 ## API
 
-// POST login - returns a bearer token
-// GET menu - list menu items
+- POST login - returns a bearer token
+- GET menu - list menu items
 
-// POST customers/{userid}/orders/{itemid} - place an order
-// GET customers/{userid}/orders - list existing orders
+- POST customers/{userid}/orders/{itemid} - place an order
+- GET customers/{userid}/orders - list existing orders
 
-// GET orders/{orderid}/price - get total price for an order
-// GET orders/{orderid}/time - get time of delivery for an order
+- GET orders/{orderid}/price - get total price for an order
+- GET orders/{orderid}/time - get time of delivery for an order
 
-// GET orders - list all orders
-// PUT orders/{orderid}/pickedup - mark an order as picked up
-// PUT orders/{orderid}/delivered - mark an order as delivered
-// PUT orders/{orderid}/delete
-// GET orders/{orderid}/print - print order to pdf
+- GET orders - list all orders
+- PUT orders/{orderid}/pickedup - mark an order as picked up
+- PUT orders/{orderid}/delivered - mark an order as delivered
+- PUT orders/{orderid}/delete
+- GET orders/{orderid}/print - print order to pdf
 
-// GET users - list all users
+- GET users - list all users
 
 ## DATABASE
 
-// Customers
-// CustomerID, user name, password, address, distance
+#### Customers
 
-// MenuItems
-// ItemID, Description, Price, prep time
+CustomerID, user name, password, address, distance
 
-// Orders
-// OrderID, UserID, ItemID, PickedUp, Delivered
+#### MenuItems
+
+ItemID, Description, Price, prep time
+
+#### Orders
+
+OrderID, UserID, ItemID, PickedUp, Delivered
 
 ## ARCHITECTURE
 

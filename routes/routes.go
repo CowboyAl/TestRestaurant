@@ -7,7 +7,6 @@ import (
 
 	"github.com/gorilla/mux"
 	"gitlab.blockrules.com/br/personal/TestRestaurant/controllers"
-	"gitlab.blockrules.com/br/personal/TestRestaurant/utils/auth"
 )
 
 // Handlers - routing handlers
@@ -38,21 +37,33 @@ func Handlers() *mux.Router {
 	// GET orders/{orderid}/time - get time of delivery for an order
 	r.HandleFunc("/orders/{orderid}/time", controllers.GetOrderTime).Methods("GET")
 
-	//GET customers/{userid}/orders - list existing orders
+	// PUT orders/{orderid}/delete - delete an order
+	r.HandleFunc("/orders/{orderid}/delete", controllers.DeleteOrder).Methods("PUT")
+
+	// Get orders/{orderid}/print - print an order
+	r.HandleFunc("/orders/{orderid}/print", controllers.PrintOrder).Methods("GET")
 
 	//r.HandleFunc("/register", controllers.CreateUser).Methods("POST"
 	r.HandleFunc("/users", controllers.FetchUsers).Methods("GET")
 
-	r.Use(auth.JwtVerify)
-	r.HandleFunc("/user", controllers.FetchUsers).Methods("GET")
+	// PUT orders/{orderid}/pickedup - mark an order as picked up
+	r.HandleFunc("/orders/{orderid}/pickedup", controllers.OrderPickedUp).Methods("PUT")
 
-	// Auth route
-	//s := r.PathPrefix("/auth").Subrouter()
-	//s.Use(auth.JwtVerify)
-	r.HandleFunc("/user", controllers.FetchUsers).Methods("GET")
-	r.HandleFunc("/user/{id}", controllers.GetUser).Methods("GET")
-	r.HandleFunc("/user/{id}", controllers.UpdateUser).Methods("PUT")
-	r.HandleFunc("/user/{id}", controllers.DeleteUser).Methods("DELETE")
+	// PUT orders/{orderid}/delivered - mark an order as delivered
+	r.HandleFunc("/orders/{orderid}/delivered", controllers.OrderDelivered).Methods("PUT")
+
+	/*
+		r.Use(auth.JwtVerify)
+		r.HandleFunc("/user", controllers.FetchUsers).Methods("GET")
+
+		// Auth route
+		//s := r.PathPrefix("/auth").Subrouter()
+		//s.Use(auth.JwtVerify)
+		r.HandleFunc("/user", controllers.FetchUsers).Methods("GET")
+		r.HandleFunc("/user/{id}", controllers.GetUser).Methods("GET")
+		r.HandleFunc("/user/{id}", controllers.UpdateUser).Methods("PUT")
+		r.HandleFunc("/user/{id}", controllers.DeleteUser).Methods("DELETE")
+	*/
 	return r
 }
 

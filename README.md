@@ -22,7 +22,7 @@ Customer role with feature:
 - Sign in/out as a customer
 - Order a food item from list of available items (populate some dummy items in the db)
 - Get total fare of the food ordered which can be calculated as per following rule-
-  - Base (Item) cost = Rate \* Quantit
+  - Base (Item) cost = Rate \* Quantity
   - Taxes - 5 % on base cost
   - Delivery charge - Rs 1 \* distance b/w customer and restaurant.
 - Get estimated time which can be calculated as per following rule-
@@ -45,6 +45,7 @@ I have made the following assumptions and simplifications:
 1.  A customer can only order one item. Otherwise, I would have to manage complex order lists.
 1.  I've harcoded the secret for the JWT bearer token. This should come from the environment or a database.
 1.  I've populated the database with 1 user, bob, with a password of bobsecret
+1.  Prices are in dollars. Travel cost is $.10/mile
 
 ## API
 
@@ -53,7 +54,6 @@ I have made the following assumptions and simplifications:
 
 // POST customers/{userid}/orders/{itemid} - place an order
 // GET customers/{userid}/orders - list existing orders
-// DELETE customers/{userid}/orders - cancel an order
 
 // GET orders/{orderid}/price - get total price for an order
 // GET orders/{orderid}/time - get time of delivery for an order
@@ -61,6 +61,7 @@ I have made the following assumptions and simplifications:
 // GET orders - list all orders
 // PUT orders/{orderid}/pickedup - mark an order as picked up
 // PUT orders/{orderid}/delivered - mark an order as delivered
+// PUT orders/{orderid}/delete
 // GET orders/{orderid}/print - print order to pdf
 
 // GET users - list all users

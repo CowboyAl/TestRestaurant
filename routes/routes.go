@@ -7,20 +7,24 @@ import (
 
 	"github.com/gorilla/mux"
 	"gitlab.blockrules.com/br/personal/TestRestaurant/controllers"
+	"gitlab.blockrules.com/br/personal/TestRestaurant/utils/auth"
 )
 
 // Handlers - routing handlers
 func Handlers() *mux.Router {
 
 	r := mux.NewRouter().StrictSlash(true)
-	r.Use(CommonMiddleware)
+	//r.Use(CommonMiddleware)
+	r.Use(auth.JwtVerify)
 
 	r.HandleFunc("/", controllers.TestAPI).Methods("GET")
 	r.HandleFunc("/api", controllers.TestAPI).Methods("GET")
 	r.HandleFunc("/login", controllers.Login).Methods("POST")
 	r.HandleFunc("/menu", controllers.ListMenu).Methods("GET")
 
-	// Secure
+	//r.Use(auth.JwtVerify)
+
+	// Below are secure functions
 
 	// Create Order
 	r.HandleFunc("/customers/{userid}/orders/{itemid}", controllers.CreateOrder).Methods("POST")

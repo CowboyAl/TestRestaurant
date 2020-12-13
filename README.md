@@ -9,6 +9,24 @@ To start this app, perform the following step in order
 1. cd into the project folder
 1. Enter `go run main.go` to start server
 
+I've created 1 user called bob with a password of bobsecret.
+
+If you log in with those credentials, you will get a token which you will need to put into the header of your http calls as a bearer token
+
+For instance login may return this:
+
+```
+{"message":"logged in","status":false,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJidmFyamRjbzBtNTdxY2JkNzZwMCIsIlVzZXJuYW1lIjoiYm9iIiwiZXhwIjoxNjEzODk4MDg2fQ.X7ukZNIO8sdVXrMFEg4s_UgZwf1JBElO_6lcfCPbSD4","user":{"ID":"bvarjdco0m57qcbd76p0","Username":"bob","Password":"bobsecret","Address":"4 Memory Lane","Distance":1.2,"CreatedAt":"2020-12-12T22:50:29.608262-08:00","UpdatedAt":"2020-12-12T22:50:29.608262-08:00"}}
+```
+
+In that case you must set
+
+```
+Bearer: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJidmFyamRjbzBtNTdxY2JkNzZwMCIsIlVzZXJuYW1lIjoiYm9iIiwiZXhwIjoxNjEzODk4MDg2fQ.X7ukZNIO8sdVXrMFEg4s_UgZwf1JBElO_6lcfCPbSD4"
+```
+
+in the http request header
+
 ## REQUIREMENTS
 
 Restaurant role with features:

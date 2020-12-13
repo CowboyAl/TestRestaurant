@@ -19,6 +19,16 @@ type Exception models.Exception
 func JwtVerify(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
+		path := r.URL.Path
+		fmt.Println("path:", path)
+		if strings.Contains(path, "/login") ||
+			strings.Contains(path, "/menu") {
+			//ctx := context.WithValue(r.Context(), "user", tk)
+			ctx := r.Context()
+			next.ServeHTTP(w, r.WithContext(ctx))
+			return
+		}
+
 		//var header = r.Header.Get("x-access-token") //Grab the token from the header
 		var header = r.Header.Get("bearer") //Grab the token from the header
 		fmt.Println("bearer:", header)

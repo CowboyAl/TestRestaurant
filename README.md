@@ -11,7 +11,7 @@ To start this app, perform the following step in order
 
 I've created 1 user called bob with a password of bobsecret.
 
-If you log in with those credentials, you will get a token which you will need to put into the header of your http calls as a bearer token
+If you log in with those credentials, you will get a jwt token which you will need to put into the header of your http calls as a bearer token
 
 For instance login may return this:
 

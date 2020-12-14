@@ -36,29 +36,40 @@ func TestAPI(w http.ResponseWriter, r *http.Request) {
 
 // Login - User login function
 func Login(w http.ResponseWriter, r *http.Request) {
-	//decoder := json.NewDecoder(r.Body)
-	//var data models.LoginRequest
-	//err := decoder.Decode(&data)
-	//if err != nil {
-	//	panic(err)
-	//}
+	//fmt.Println("in login")
 
-	//username := data.Username
-	//password := data.Password
-
-	log.Println("Login:")
+	var username, password string
 
 	err := r.ParseForm()
-	username := r.Form.Get("username")
-	password := r.Form.Get("password")
+	username = r.Form.Get("username")
+	password = r.Form.Get("password")
+
+	//fmt.Println("err=", err)
+
+	if len(username) == 0 || len(password) == 0 {
+		decoder := json.NewDecoder(r.Body)
+		var data models.LoginRequest
+		err := decoder.Decode(&data)
+		if err != nil {
+			panic(err)
+		}
+
+		username = data.Username
+		password = data.Password
+	}
+
+	//err := r.ParseForm()
+	//username := r.Form.Get("username")
+	//password := r.Form.Get("password")
 
 	log.Println("Login:", username)
 
 	//user := &models.LoginRequest{}
 	//body, err := ioutil.ReadAll(r.Body)
 	//fmt.Println("Bodyd:", string(body))
+
 	//err := json.NewDecoder(r.Body).Decode(user)
-	//user := models.LoginRequest{}
+	//user := models.LoginRequest{
 	//if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 	if err != nil {
 		var resp = map[string]interface{}{"status": false, "message": "Invalid request"}

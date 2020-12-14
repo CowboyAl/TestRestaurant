@@ -64,7 +64,8 @@ I have made the following assumptions and simplifications:
 1.  I've harcoded the secret for the JWT bearer token. This should come from the environment or a database.
 1.  I've populated the database with 1 user, bob, with a password of bobsecret
 1.  Prices are in dollars. Travel cost is $.10/mile
-1.  I was having trouble parsing the post data from Postman, so I'm just reading the parameters from the query string.  E.g., /login?username=bob&password=bobsecret
+1.  For /login you can use parameters from the query string. E.g., /login?username=bob&password=bobsecret
+1.  For login, you can also do a post with the postdata in the form of {"username":"bob","password":"bobsecret"}
 1.  You can get the commit history from Github
 1.  When you print the pdf it writes a file called "report.pdf" in the executable directory.
 

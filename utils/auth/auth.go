@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
@@ -20,7 +21,7 @@ func JwtVerify(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		path := r.URL.Path
-		fmt.Println("path:", path)
+		log.Println("path:", r.Method, path)
 		if strings.Contains(path, "/login") ||
 			strings.Contains(path, "/menu") {
 			//ctx := context.WithValue(r.Context(), "user", tk)

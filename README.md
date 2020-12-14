@@ -83,7 +83,7 @@ I have made the following assumptions and simplifications:
 - GET orders - list all orders
 - PUT orders/{orderid}/pickedup - mark an order as picked up
 - PUT orders/{orderid}/delivered - mark an order as delivered
-- PUT orders/{orderid}/delete
+- DELETE orders/{orderid} - delete an order
 - GET orders/{orderid}/print - print order to pdf
 
 - GET users - list all users

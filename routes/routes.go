@@ -42,7 +42,7 @@ func Handlers() *mux.Router {
 	r.HandleFunc("/orders/{orderid}/time", controllers.GetOrderTime).Methods("GET")
 
 	// PUT orders/{orderid}/delete - delete an order
-	r.HandleFunc("/orders/{orderid}/delete", controllers.DeleteOrder).Methods("PUT")
+	r.HandleFunc("/orders/{orderid}", controllers.DeleteOrder).Methods("DELETE")
 
 	// Get orders/{orderid}/print - print an order
 	r.HandleFunc("/orders/{orderid}/print", controllers.PrintOrder).Methods("GET")
